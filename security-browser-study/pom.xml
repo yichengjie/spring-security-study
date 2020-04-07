@@ -11,5 +11,18 @@
 
     <artifactId>security-browser-study</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yicj.study</groupId>
+            <artifactId>security-core-study</artifactId>
+            <!--<version>${imooc.securiity.version}</version>-->
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>

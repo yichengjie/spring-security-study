@@ -11,5 +11,13 @@
 
     <artifactId>security-demo-study</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yicj.study</groupId>
+            <artifactId>security-browser-study</artifactId>
+            <!--<version>${imooc.securiity.version}</version>-->
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
