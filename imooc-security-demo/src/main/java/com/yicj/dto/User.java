@@ -1,6 +1,7 @@
 package com.yicj.dto;
 
 import org.codehaus.jackson.map.annotate.JsonView;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.Date;
 
@@ -11,6 +12,7 @@ public class User {
 
     private String id ;
     private String username;
+    @NotBlank
     private String password;
     private Date birthday ;
 
