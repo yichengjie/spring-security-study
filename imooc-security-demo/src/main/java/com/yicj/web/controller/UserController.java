@@ -8,13 +8,14 @@ import org.codehaus.jackson.map.annotate.JsonView;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
+
+    @GetMapping
     @JsonView(User.UserSimpleView.class)
     public List<User> query(
             UserQueryCondition condition,
@@ -35,11 +36,19 @@ public class UserController {
         return users ;
     }
 
-    @GetMapping("/user/{id:\\d+}")
-    @JsonView(User.UserSimpleView.class)
-    public User getInfo(@PathVariable String id){
+    @GetMapping("/{id:\\d+}")
+    @JsonView(User.UserDetailView.class)
+    public User getUser(@PathVariable String id){
         User user = new User() ;
         user.setUsername("tom");
+        return user ;
+    }
+
+    @PostMapping
+    @JsonView(User.UserSimpleView.class)
+    public User createUser(@RequestBody User user){
+        System.out.println(ReflectionToStringBuilder.toString(user,ToStringStyle.MULTI_LINE_STYLE));
+        user.setId("1");
         return user ;
     }
 }
