@@ -8,10 +8,10 @@
     <artifactId>spring-security-study</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>security-core-study</module>
-        <module>security-app-study</module>
-        <module>security-browser-study</module>
-        <module>security-demo-study</module>
+		<module>../imooc-security-app</module>
+		<module>../imooc-security-browser</module>
+		<module>../imooc-security-core</module>
+		<module>../imooc-security-demo</module>
     </modules>
     <packaging>pom</packaging>
 
