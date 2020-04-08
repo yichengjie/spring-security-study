@@ -1,0 +1,1 @@
+配置.loginProcessingUrl("/authentication/form")后必须得配置.and().csrf().disable();否则回返回无权访问
