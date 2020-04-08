@@ -2,11 +2,15 @@ package com.yicj.web.controller;
 
 import com.yicj.dto.User;
 import com.yicj.dto.UserQueryCondition;
+import com.yicj.exception.UserNotExistException;
+
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.codehaus.jackson.map.annotate.JsonView;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,16 +45,49 @@ public class UserController {
     @GetMapping("/{id:\\d+}")
     @JsonView(User.UserDetailView.class)
     public User getUser(@PathVariable String id){
+    	
+    	System.out.println("进入getUser 服务...");
         User user = new User() ;
         user.setUsername("tom");
         return user ;
+        //throw new RuntimeException("user not exist !") ;
+        //throw new UserNotExistException("001") ;
+        
     }
 
     @PostMapping
     @JsonView(User.UserSimpleView.class)
-    public User createUser(@Valid @RequestBody User user){
-        System.out.println(ReflectionToStringBuilder.toString(user,ToStringStyle.MULTI_LINE_STYLE));
+	public User createUser(@Valid @RequestBody User user/* , BindingResult errors */){
+//    	if(errors.hasErrors()) {
+//    		errors.getAllErrors()
+//    		.stream()
+//    		.forEach(error -> System.out.println(error.getDefaultMessage()));
+//    	}
+    	System.out.println(ReflectionToStringBuilder.toString(user,ToStringStyle.MULTI_LINE_STYLE));
         user.setId("1");
         return user ;
     }
+    
+    @PutMapping("/{id:\\d+}")
+	public User update(@Valid @RequestBody User user, BindingResult errors) {
+    	if(errors.hasErrors()) {
+    		errors.getAllErrors()
+    		.stream()
+    		.forEach(error -> {
+    			FieldError fieldError = (FieldError) error ;
+    			System.out.println(fieldError.getField() +" : " + fieldError.getDefaultMessage()) ;
+    		});
+    	}
+    	System.out.println(user.getId());
+		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());
+		System.out.println(user.getBirthday());
+		user.setId("1");
+		return user;
+	}
+    
+    @DeleteMapping("/{id:\\d+}")
+	public void delete(@PathVariable String id) {
+		System.out.println(id);
+	}
 }
