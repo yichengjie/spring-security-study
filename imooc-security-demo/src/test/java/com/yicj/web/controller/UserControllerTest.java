@@ -47,6 +47,8 @@ public class UserControllerTest {
         perform.andExpect(status().isOk()) ;
         //期望返回数据长度为3
         perform.andExpect(jsonPath("$.length()").value(3)) ;
+        String respContent = perform.andReturn().getResponse().getContentAsString();
+        System.out.println(respContent);
     }
 
 
@@ -57,6 +59,8 @@ public class UserControllerTest {
         );
         perform.andExpect(status().isOk()) ;
         perform.andExpect(jsonPath("$.username").value("tom")) ;
+        String respContent = perform.andReturn().getResponse().getContentAsString();
+        System.out.println(respContent);
     }
 
 
