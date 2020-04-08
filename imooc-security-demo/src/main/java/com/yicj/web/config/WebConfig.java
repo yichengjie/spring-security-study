@@ -20,11 +20,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(timeInterceptor) ;
+		//registry.addInterceptor(timeInterceptor) ;
 	}
 	
 	//第三方filter的注册方式
-	@Bean
+	//@Bean
 	public FilterRegistrationBean timeFilter() {
 		FilterRegistrationBean resiBean = new FilterRegistrationBean() ;
 		TimeFilter timeFilter = new TimeFilter() ;

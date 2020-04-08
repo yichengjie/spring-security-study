@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
+//@Component
 public class TimeAspect {
 	
 	@Around("execution(* com.yicj.web.controller.UserController.*(..))")
