@@ -2,8 +2,6 @@ package com.yicj.web.controller;
 
 import com.yicj.dto.User;
 import com.yicj.dto.UserQueryCondition;
-import com.yicj.exception.UserNotExistException;
-
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.codehaus.jackson.map.annotate.JsonView;
