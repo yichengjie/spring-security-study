@@ -7,3 +7,4 @@
 5. restfule api的拦截
    过滤器、拦截器、切片(aspect)
 6. 使用切面时debug打在controller方法中的断点无法进入
+7. WireMock伪造rest服务

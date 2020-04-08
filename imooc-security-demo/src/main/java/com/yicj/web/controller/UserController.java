@@ -2,6 +2,9 @@ package com.yicj.web.controller;
 
 import com.yicj.dto.User;
 import com.yicj.dto.UserQueryCondition;
+
+import io.swagger.annotations.ApiOperation;
+
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.codehaus.jackson.map.annotate.JsonView;
@@ -21,6 +24,7 @@ public class UserController {
 
     @GetMapping
     @JsonView(User.UserSimpleView.class)
+    @ApiOperation("用户查询服务")
     public List<User> query(
             UserQueryCondition condition,
             @PageableDefault(page = 2,size = 17,sort = "username,asc") Pageable pageable

@@ -6,6 +6,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -18,7 +19,7 @@ public class AsyncController {
 	@Autowired
 	private DeferredResultHolder deferredResultHolder;
 	
-	@RequestMapping("/orderDeferred")
+	@GetMapping("/orderDeferred")
 	public DeferredResult<String> orderDeferred() {
 		logger.info("主线程开始");
 		String orderNumber = RandomStringUtils.randomNumeric(8);
@@ -32,7 +33,7 @@ public class AsyncController {
 	}
 	
 	
-	@RequestMapping("/orderCallable")
+	@GetMapping("/orderCallable")
 	public Callable<String> orderCallable() {
 		logger.info("主线程开始");
 		Callable<String> result = new Callable<String>() {
@@ -52,7 +53,7 @@ public class AsyncController {
 		return result ;
 	}
 	
-	@RequestMapping("/orderSync")
+	@GetMapping("/orderSync")
 	public String orderSync() {
 		logger.info("主线程开始");
 		try {
