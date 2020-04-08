@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yicj.security.browser.support.SimpleResponse;
 import com.yicj.security.core.properties.SecurityProperties;
 
-
+//浏览器环境下登录成功的处理器
 @Component("imoocAuthenticationSuccessHandler")
 public class ImoocAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 

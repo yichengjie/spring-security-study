@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.yicj.security.browser.authentication.ImoocAuthenctiationFailureHandler;
 import com.yicj.security.browser.authentication.ImoocAuthenticationSuccessHandler;
 import com.yicj.security.core.properties.SecurityProperties;
 
@@ -18,6 +19,8 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter{
 	private SecurityProperties securityProperties ;
 	@Autowired
 	private ImoocAuthenticationSuccessHandler imoocAuthenticationSuccessHandler ;
+	@Autowired
+	private ImoocAuthenctiationFailureHandler imoocAuthenctiationFailureHandler ;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -32,6 +35,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter{
 		.loginPage("/authentication/require")
 		.loginProcessingUrl("/authentication/form")
 		.successHandler(imoocAuthenticationSuccessHandler)//登录成功处理器
+		.failureHandler(imoocAuthenctiationFailureHandler)//失败处理器
 		//http.httpBasic()
 		.and()
 		.authorizeRequests() //对请求做一个授权
