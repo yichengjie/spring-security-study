@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -21,6 +21,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		//registry.addInterceptor(timeInterceptor) ;
+	}
+	
+	//异步注册相关的配置
+	@Override
+	public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+		// TODO Auto-generated method stub
+		super.configureAsyncSupport(configurer);
+		//configurer.
 	}
 	
 	//第三方filter的注册方式
