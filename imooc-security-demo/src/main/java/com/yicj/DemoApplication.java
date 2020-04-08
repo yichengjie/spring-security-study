@@ -1,4 +1,4 @@
-package com.yicj.demo;
+package com.yicj;
 
 
 import org.springframework.boot.SpringApplication;
