@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -46,7 +48,7 @@ public class UserController {
 
     @PostMapping
     @JsonView(User.UserSimpleView.class)
-    public User createUser(@RequestBody User user){
+    public User createUser(@Valid @RequestBody User user){
         System.out.println(ReflectionToStringBuilder.toString(user,ToStringStyle.MULTI_LINE_STYLE));
         user.setId("1");
         return user ;
