@@ -26,7 +26,7 @@ public class BrowserSecurityController {
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
 	@Autowired
-	private SecurityProperties secirityProperties ;
+	private SecurityProperties securityProperties ;
 	
 	
 	@RequestMapping("/authentication/require")
@@ -38,7 +38,7 @@ public class BrowserSecurityController {
 			String targetUrl = savedRequest.getRedirectUrl();
 			logger.info("引发跳转的请求是:" + targetUrl);
 			if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
-				redirectStrategy.sendRedirect(request, response, secirityProperties.getBrowser().getLoginPage());
+				redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
 			}
 		}
 		return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页") ;

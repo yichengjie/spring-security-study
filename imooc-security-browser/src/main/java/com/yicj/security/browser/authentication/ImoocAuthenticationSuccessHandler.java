@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yicj.security.core.properties.LoginType;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +39,13 @@ public class ImoocAuthenticationSuccessHandler extends SavedRequestAwareAuthenti
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		logger.info("登录成功");
-		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().write(objectMapper.writeValueAsString(authentication));
+		if (LoginType.JSON.equals(securityProperties.getBrowser().getLoginType())){
+			response.setContentType("application/json;charset=UTF-8");
+			response.getWriter().write(objectMapper.writeValueAsString(authentication));
+		}else {//否则调用父类得方法，父类的方法就是跳转
+			super.onAuthenticationSuccess(request,response,authentication);
+		}
+
 	}
 
 }
